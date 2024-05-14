@@ -46,3 +46,7 @@ df.to_csv("autores.csv")
 
 autores = pd.read_csv('autores.csv', index_col=0)
 print(autores)
+print(autores.info())
+print(autores.columns)
+print(autores.index)
+
