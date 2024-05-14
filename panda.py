@@ -28,3 +28,21 @@ print('São Carlos' in populacao_cidades)
 
 populacao_cidades['Vitória'] = 365.855
 print(populacao_cidades)
+
+del populacao_cidades['Fortaleza']
+print(populacao_cidades)
+
+Autor = ['Sun Tzu', 'Fernando Pessoa', 'Thomas Mann', 'João Guimarães Rosa']
+Livro = ['A Arte da guerra', 'Poesias Selecionadas', 'A Montanha mágica', 'Primeiras estórias']
+Ano = [2000, 2004, 2015, 2017]
+
+dados = {'Autor':Autor, 'Livro':Livro, 'Ano':Ano}
+autores = pd.DataFrame(dados)
+print(type(autores))
+df = pd.DataFrame(autores)
+print(df)
+
+df.to_csv("autores.csv")
+
+autores = pd.read_csv('autores.csv', index_col=0)
+print(autores)
