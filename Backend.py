@@ -1,7 +1,7 @@
 import sqlite3 as sql
 
 class TransactionObject():
-    database = "cliente.db"
+    database = "clientes.db"
     conn = None
     cur = None
     connected = False
