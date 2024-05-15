@@ -25,7 +25,7 @@ class TransactionObject():
         else:
             return False
 
-    def fechall(self):
+    def fetchall(self):
         return TransactionObject.cur.fetchall()
 
     def persist(self):
@@ -43,11 +43,17 @@ def initDB():
     trans.persist()
     trans.disconnect()
 
+def insert (nome, sobrenome, email, cpf):
+    trans = TransactionObject()
+    trans.connect()
+    trans.execute("INSERT INTO clientes VALUES (NULL, ?, ?, ?, ?)", (nome, sobrenome, email, cpf))
+    trans.persist()
+    trans.disconnect()
 def view():
     trans = TransactionObject()
     trans.connect()
     trans.execute("SELECT * FROM clientes")
-    rows = trans.fetchall()
+    rows = trans.fetchall()  # Corrigindo a chamada para o método fechall
     trans.disconnect()
     return rows
 
@@ -55,8 +61,8 @@ def search(nome="", sobrenome="", email="", cpf=""):
     trans = TransactionObject()
     trans.connect()
 
-    trans.execute("SELECT * FROM clinetes WHERE nome=? or sobrenome=? or email=? or cpf=?", (nome,sobrenome,email,cpf))
-    rows = trans.fechall()
+    trans.execute("SELECT * FROM clientes WHERE nome=? or sobrenome=? or email=? or cpf=?", (nome,sobrenome,email,cpf))
+    rows = trans.fetchall()
     trans.disconnect()
     return rows
 

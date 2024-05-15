@@ -45,11 +45,10 @@ def getSelectedRow(event):
 if __name__ == "__main__":
     app = Gui()
     app.listClientes.bind('<<ListboxSelect>>', getSelectedRow)
-
     app.btnViewAll.configure(command=view_command)
-    app.btnBuscar.configure(command=view_command)
-    app.btnInserir.configure(command=view_command)
-    app.btnUpdate.configure(command=view_command)
-    app.btnDel.configure(command=view_command)
-    app.btnClose.configure(command=view_command)
+    app.btnBuscar.configure(command=search_command)
+    app.btnInserir.configure(command=insert_command)
+    app.btnUpdate.configure(command=update_command)
+    app.btnDel.configure(command=del_command)
+    app.btnClose.configure(command=app.window.destroy)
     app.run()
